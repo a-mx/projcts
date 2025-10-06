@@ -1,0 +1,37 @@
+from logging import captureWarnings
+from operator import index
+
+test_cards = [
+    "4242 4242 4242 4242",
+    "5555-5555-5555-4444",
+    "378282246310005",
+    "6011 1111 1111 1117",
+    "",
+    "3530 1113 3330 0000",
+    "4000056655665556",
+]
+card_number = input("Enter card number : ")
+
+card_number = card_number.replace(" ","")
+card_number = card_number.replace("-","")
+
+card_number = card_number[::-1]
+sum_odd = 0
+sum_even = 0
+for x in card_number[::2]:
+
+    sum_odd += int(x)
+for x in card_number[1::2]:
+    x = int(x) * 2
+    if int(x) >=10:
+        sum_even += (1 + (x % 10))
+
+    else:
+        sum_even += int(x)
+
+total = sum_even + sum_odd
+if total % 10 == 0:
+    print("Valid")
+else:
+    print("Invalid")
+
